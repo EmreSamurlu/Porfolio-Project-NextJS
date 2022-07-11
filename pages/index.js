@@ -1,17 +1,17 @@
-import Head from "next/head";
-import Image from "next/image";
+import Home from "./Home";
+import Container from "../src/components/Container";
+import TopBar from "../src/components/TopBar";
+import ReduxProvider from "../src/redux/ReduxProvider";
 
-import Container from "../components/Container";
-import styles from "../styles/Home.module.css";
-
-const Home = () => {
+const App = () => {
   return (
-    <Container>
-      <h1 className="text-3xl font-bold underline text-primaryText">
-        Hello world!
-      </h1>
-    </Container>
+    <ReduxProvider>
+      <Container>
+        <TopBar />
+        <Home />
+      </Container>
+    </ReduxProvider>
   );
 };
 
-export default Home;
+export default App;

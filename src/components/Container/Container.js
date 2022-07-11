@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 
-const Container = ({ children, ...customMeta }) => {
+const Container = ({ children, style, ...customMeta }) => {
   const meta = {
     title: "Emre Samurlu | Full Stack Developer - Freelancer",
     ...customMeta,
@@ -11,7 +11,7 @@ const Container = ({ children, ...customMeta }) => {
       <Head>
         <title>{meta.title}</title>
       </Head>
-      <main className="bg-backgroundColor w-full h-full">{children}</main>
+      <main style={style}>{children}</main>
     </div>
   );
 };
