@@ -1,9 +1,0 @@
-.container {
-  display: flex;
-}
-
-.navbar {
-  flex-direction: row;
-  width: 300px;
-  color: 'red';
-}
