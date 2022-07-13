@@ -1,3 +1,3 @@
 export default {
-  darkTheme: false,
+  theme: "light",
 };

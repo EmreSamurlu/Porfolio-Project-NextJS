@@ -1,5 +1,5 @@
 const light = {
-  primary: "#FDFDFD",
+  primary: "grey",
   primaryText: "#141414",
 };
 

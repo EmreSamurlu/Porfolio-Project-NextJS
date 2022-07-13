@@ -6,7 +6,9 @@ export default createSlice({
   initialState,
   reducers: {
     toggleTheme: (state) => {
-      state.darkTheme = !state.darkTheme;
+      state.theme === "light"
+        ? (state.theme = "dark")
+        : (state.theme = "light");
     },
   },
 });
