@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { SunIcon, MoonIcon } from "@heroicons/react/solid";
 import { useTheme } from "next-themes";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 import navigation from "../Navigation";
-import Link from "next/link";
-import styles from "./TopBar.styles";
-import { useRouter } from "next/router";
+import { container, navbar, theme_changer, text } from "./styles.module.css";
 
 const TopBar = () => {
   const routes = useRouter();
@@ -24,7 +24,7 @@ const TopBar = () => {
     if (currentTheme === "dark") {
       return (
         <SunIcon
-          className="w-10 h-10 text-yellow-500 "
+          className="w-10 h-10"
           role="button"
           onClick={() => setTheme("light")}
         />
@@ -32,7 +32,7 @@ const TopBar = () => {
     } else {
       return (
         <MoonIcon
-          className="w-10 h-10 text-gray-900 "
+          className="w-10 h-10 "
           role="button"
           onClick={() => setTheme("dark")}
         />
@@ -41,25 +41,27 @@ const TopBar = () => {
   };
 
   return (
-    <div style={styles.container}>
+    <div className={container}>
       {navigation.map((link) => {
+        console.log("link", link.path);
+        console.log("pathname", routes.pathname);
         return (
-          <ul
-            className={
-              link.path === routes.route
-                ? "text-red"
-                : "text-nero dark:text-off_white"
-            }
-            style={styles.navbar}
-            key={link.name}>
-            <Link className="text-red" href={link.path}>
-              <li className="text-sky-400">{link.name}</li>
+          <ul className={navbar} key={link.name}>
+            <Link href={link.path}>
+              <li
+                className={
+                  link.path === routes.pathname
+                    ? "text-red"
+                    : "text-nero dark:text-off_white"
+                }>
+                {link.name}
+              </li>
             </Link>
           </ul>
         );
       })}
 
-      <div style={styles.themeChanger}>{renderThemeChanger()}</div>
+      <div className={theme_changer}>{renderThemeChanger()}</div>
     </div>
   );
 };

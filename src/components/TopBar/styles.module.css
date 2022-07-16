@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  margin: 0 100px;
+  padding-top: 50px;
+}
+
+.navbar {
+  flex-direction: row;
+  width: 300px;
+  font-family: "Roboto-Bold";
+}
+
+.theme_changer {
+  width: 25px;
+}
