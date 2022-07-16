@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import { SunIcon, MoonIcon } from "@heroicons/react/solid";
 import { useTheme } from "next-themes";
 
-import Logo from "../Logo";
 import navigation from "../Navigation";
 import Link from "next/link";
 import styles from "./TopBar.styles";
+import { useRouter } from "next/router";
 
 const TopBar = () => {
+  const routes = useRouter();
   const { systemTheme, theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -44,19 +45,21 @@ const TopBar = () => {
       {navigation.map((link) => {
         return (
           <ul
-            className="text-slate-500 dark:text-slate-400 mt-2 text-sm"
+            className={
+              link.path === routes.route
+                ? "text-red"
+                : "text-nero dark:text-off_white"
+            }
             style={styles.navbar}
             key={link.name}>
-            <Link href={link.path}>
-              <li>{link.name}</li>
+            <Link className="text-red" href={link.path}>
+              <li className="text-sky-400">{link.name}</li>
             </Link>
           </ul>
         );
       })}
 
-      <div>
-        <div style={styles.themeChanger}>{renderThemeChanger()}</div>
-      </div>
+      <div style={styles.themeChanger}>{renderThemeChanger()}</div>
     </div>
   );
 };
